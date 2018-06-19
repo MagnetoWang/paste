@@ -1,1 +1,10 @@
 /target/
+/.idea/
+*.iml
+mvnw
+mvnw.cmd
+.mvn
+LOG_PATH_IS_UNDEFINED
+.DS_Store
+.classpath
+.project
