@@ -24,20 +24,21 @@ public class RWExcel {
     }
 
     /**
-     * @see. å†™å…¥excelæ–‡ä»¶ ã€‚åç¼€å xls
+     * @author  MagnetoWang
+     * Ğ´ÈëexcelÎÄ¼ş ¡£ºó×ºÃû xls
      */
     public static void writeExcel(){
-        // åˆ›å»ºä¸€ä¸ªExcelæ–‡ä»¶
+        // ´´½¨Ò»¸öExcelÎÄ¼ş
         HSSFWorkbook workbook = new HSSFWorkbook();
-        // åˆ›å»ºä¸€ä¸ªå·¥ä½œè¡¨
-        HSSFSheet sheet = workbook.createSheet("å­¦ç”Ÿè¡¨ä¸€");
-        // æ·»åŠ è¡¨å¤´è¡Œ
+        // ´´½¨Ò»¸ö¹¤×÷±í
+        HSSFSheet sheet = workbook.createSheet("Ñ§Éú±íÒ»");
+        // Ìí¼Ó±íÍ·ĞĞ
         HSSFRow hssfRow = sheet.createRow(0);
-        // è®¾ç½®å•å…ƒæ ¼æ ¼å¼å±…ä¸­
+        // ÉèÖÃµ¥Ôª¸ñ¸ñÊ½¾ÓÖĞ
         HSSFCellStyle cellStyle = workbook.createCellStyle();
 //        cellStyle.setAlignment(HSSFCellStyle.ALIGN_LEFT);
 
-        // æ·»åŠ è¡¨å¤´å†…å®¹
+        // Ìí¼Ó±íÍ·ÄÚÈİ
         HSSFCell headCell = hssfRow.createCell(0);
         headCell.setCellValue("query");
         headCell.setCellStyle(cellStyle);
@@ -49,12 +50,12 @@ public class RWExcel {
         headCell = hssfRow.createCell(2);
         headCell.setCellValue("name");
         headCell.setCellStyle(cellStyle);
-        //æ’å…¥æ•°æ®æ¨¡å—
+        //²åÈëÊı¾İÄ£¿é
         for (int i = 0; i < 10; i++) {
             hssfRow = sheet.createRow((int) i + 1);
 
 
-            // åˆ›å»ºå•å…ƒæ ¼ï¼Œå¹¶è®¾ç½®å€¼
+            // ´´½¨µ¥Ôª¸ñ£¬²¢ÉèÖÃÖµ
             HSSFCell cell = hssfRow.createCell(0);
             cell.setCellValue("queryRow");
             cell.setCellStyle(cellStyle);
@@ -64,10 +65,10 @@ public class RWExcel {
             cell.setCellStyle(cellStyle);
 
             cell = hssfRow.createCell(2);
-            cell.setCellValue("æ±‰å­—");
+            cell.setCellValue("ºº×Ö");
             cell.setCellStyle(cellStyle);
         }
-        //ä¿å­˜æ–‡ä»¶ä»£ç 
+        //±£´æÎÄ¼ş´úÂë
         try {
             OutputStream outputStream = new FileOutputStream("src/resourse/test.xls");
             workbook.write(outputStream);
@@ -79,15 +80,16 @@ public class RWExcel {
     }
 
     /**
-     * æ³¨æ„æ–‡ä»¶åœ°å€ä½ç½®
-     * è¯»excel æ–‡ä»¶
+     * ×¢ÒâÎÄ¼şµØÖ·Î»ÖÃ
+     * ¶Áexcel ÎÄ¼ş
      */
+
     public static void readExcel(){
         List<Student> list = new ArrayList<Student>();
         HSSFWorkbook workbook = null;
 
         try {
-            // è¯»å–Excelæ–‡ä»¶
+            // ¶ÁÈ¡ExcelÎÄ¼ş
             InputStream inputStream = new FileInputStream("src/resourse/test.xls");
             workbook = new HSSFWorkbook(inputStream);
             inputStream.close();
@@ -95,20 +97,20 @@ public class RWExcel {
             e.printStackTrace();
         }
 
-        // å¾ªç¯å·¥ä½œè¡¨
+        // Ñ­»·¹¤×÷±í
         for (int numSheet = 0; numSheet < workbook.getNumberOfSheets(); numSheet++) {
             HSSFSheet hssfSheet = workbook.getSheetAt(numSheet);
             if (hssfSheet == null) {
                 continue;
             }
-            // å¾ªç¯è¡Œ
+            // Ñ­»·ĞĞ
             for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
                 HSSFRow hssfRow = hssfSheet.getRow(rowNum);
                 if (hssfRow == null) {
                     continue;
                 }
 
-                // å°†å•å…ƒæ ¼ä¸­çš„å†…å®¹å­˜å…¥é›†åˆ
+                // ½«µ¥Ôª¸ñÖĞµÄÄÚÈİ´æÈë¼¯ºÏ
                 Student student = new Student();
 
                 HSSFCell cell = hssfRow.getCell(0);
@@ -132,7 +134,7 @@ public class RWExcel {
                 list.add(student);
             }
         }
-        //æ‰“å°è¯»å–çš„æ•°æ®
+        //´òÓ¡¶ÁÈ¡µÄÊı¾İ
         for(Student e : list){
             System.out.println(e.Age+" "+ e.Grade);
         }
