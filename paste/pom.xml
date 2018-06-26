@@ -27,6 +27,20 @@
   </properties>
 
   <dependencies>
+      <!--加入 缓存机制依赖-->
+      <dependency>
+          <groupId>org.ehcache</groupId>
+          <artifactId>ehcache</artifactId>
+          <version>3.5.2</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.cache</groupId>
+          <artifactId>cache-api</artifactId>
+          <version>1.0.0</version>
+      </dependency>
+
+
+      <!--加入 读写excel依赖-->
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
@@ -45,17 +59,24 @@
           <scope>test</scope>
       </dependency>
 
-      <!-- https://mvnrepository.com/artifact/log4j/log4j -->
-      <dependency>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
-          <version>1.2.17</version>
-      </dependency>
+
 
       <dependency>
           <groupId>com.hankcs</groupId>
           <artifactId>hanlp</artifactId>
           <version>portable-1.6.4</version>
+      </dependency>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-simple</artifactId>
+          <version>1.6.4</version>
+      </dependency>
+
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.14</version>
+          <scope>provided</scope>
       </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
