@@ -8,21 +8,19 @@ import org.ehcache.config.Configuration;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
-import org.ehcache.core.config.ExpiryUtils;
+
 import java.time.Duration;
 
-import org.ehcache.expiry.Expirations;
+
 import org.ehcache.expiry.ExpiryPolicy;
 import org.ehcache.xml.XmlConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URL;
-import java.util.Date;
-import java.util.Map;
+
 import java.util.function.Supplier;
 
-import static java.lang.Thread.sleep;
 
 /***
  * ehcache3 采取一个生命周期的概念来操作动态运行程序的缓存时间

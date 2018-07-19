@@ -17,8 +17,8 @@ import java.util.Map;
 *
 * @ClassName : readCityName.java
 * @author : Magneto_Wang
-* @date  2018Äê6ÔÂ15ÈÕ ÏÂÎç2:36:37
-* @Description  Ö´ĞĞ²éÑ¯ÎÄ¼ş
+* @date  2018å¹´6æœˆ15æ—¥ ä¸‹åˆ2:36:37
+* @Description  æ‰§è¡ŒæŸ¥è¯¢æ–‡ä»¶
 *
 */
 public class readCityName {
@@ -85,13 +85,13 @@ public class readCityName {
         
         BufferedReader reader = null;  
         try {  
-//            System.out.println("ÒÔĞĞÎªµ¥Î»¶ÁÈ¡ÎÄ¼şÄÚÈİ£¬Ò»´Î¶ÁÒ»ÕûĞĞ£º");  
+//            System.out.println("ä»¥è¡Œä¸ºå•ä½è¯»å–æ–‡ä»¶å†…å®¹ï¼Œä¸€æ¬¡è¯»ä¸€æ•´è¡Œï¼š");  
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"gbk") );  
             String tempString = null;  
             int line = 1;  
-            // Ò»´Î¶ÁÈëÒ»ĞĞ£¬Ö±µ½¶ÁÈënullÎªÎÄ¼ş½áÊø  
+            // ä¸€æ¬¡è¯»å…¥ä¸€è¡Œï¼Œç›´åˆ°è¯»å…¥nullä¸ºæ–‡ä»¶ç»“æŸ  
             while ((tempString = reader.readLine()) != null) {  
-                // ÏÔÊ¾ĞĞºÅ  
+                // æ˜¾ç¤ºè¡Œå·  
 //                System.out.println("line " + line + ": " + tempString);  
                 cityName.add(tempString);
                 line++;  
@@ -115,7 +115,7 @@ public class readCityName {
         
         BufferedWriter writer = null;  
         try {  
-//            System.out.println("ÒÔĞĞÎªµ¥Î»¶ÁÈ¡ÎÄ¼şÄÚÈİ£¬Ò»´Î¶ÁÒ»ÕûĞĞ£º");  
+//            System.out.println("ä»¥è¡Œä¸ºå•ä½è¯»å–æ–‡ä»¶å†…å®¹ï¼Œä¸€æ¬¡è¯»ä¸€æ•´è¡Œï¼š");  
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"utf-8"));
             for(Map<String, String> e :cityResult){
             	String tempString = e.get("value")+" "+e.get("type")+" "+e.get("name");
