@@ -3,11 +3,14 @@
     - http://blog.anxpp.com/index.php/archives/489/
     - https://github.com/anxpp/JavaDesignPattern
     - https://blog.csdn.net/cselmu9/article/details/51366946
+    - http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html
 - 说明
     - 非常感谢上面链接的原创者的资料和代码。让我受益无穷
 
 
-
+### 设计模式字典
+- 模式图解：http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html
+- 
 ### 模式分类
 
 - 创建型
@@ -41,3 +44,9 @@
 	- **外观模式**
 	- **桥接模式**
 	- **装饰模式**
+
+### 模式说明
+
+- **工厂方法模式** 和 **抽象工厂方法模式** 的关系。抽象工厂方法模式 **包含** 工厂模式
+- 单例模式 的 多线程解决方案 是  双重检查
+
