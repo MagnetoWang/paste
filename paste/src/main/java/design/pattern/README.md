@@ -37,8 +37,13 @@
 - 行为型模式
   -  行为型模式涉及怎样合理的设计对象之间的交互通信，以及怎样合理为对象分配职责，让设计富有弹性，易维护，易复用。 
   -  [**责任链模式**](https://github.com/Jia-Hong-Peng/Graphic-design-pattern/blob/master/src/ChainOfResponsibility)
-  -  **命令模式**
+     -   使很多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。 
+  -  [**命令模式**](http://blog.anxpp.com/index.php/archives/489/)
+     -  将一个请求封装为一个对象，从而使用户可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。 
+     -  Encapsulate a request as an object,thereby letting you parameterize clients with different reauests,queue or log requests,and support undoable operations. 
   -  **解释器模式**
+     -   给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。 
+     -  Given a language,define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language. 
   -  **迭代器模式**
   -  **中介者模式**
   -  **备忘录模式**
@@ -66,4 +71,6 @@
 - 单例模式 的 多线程解决方案 是  双重检查
 - 生成器模式：builder接口或者抽象类,具体类（想要的格式）和一个中间负责人的类（提供内容并指定对应的类）
 - 责任链模式：好的责任链模式的具体处理者应该是不受顺序的影响。也就是低耦合，高度独立！
+- 命令模式：定义一个接口，具体类分别实现里面的方法。同样需要一个管理者，来统筹这些命令
+- 
 
