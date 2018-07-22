@@ -45,8 +45,12 @@
      -   给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。 
      -  Given a language,define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language. 
   -  **迭代器模式**
+     -  提供一种方法顺序访问一个聚合对象中的各个元素，而由不需要暴露该对象的内部细节。 
   -  **中介者模式**
+     -  用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显示的相互引用，从而使其耦合松散，而且可以独立的改变他们之前的交互。 
   -  **备忘录模式**
+     -  在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存该状态，这样就可以将该对象恢复到之前保存的状态。 
+     -   Without violating encapsulation,captrue and externalize an object' orifianl state so that the object can be restored to this state later. 
   -  **观察者模式**
   -  **状态模式**
   -  **策略模式**
