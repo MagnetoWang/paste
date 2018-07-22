@@ -4,7 +4,7 @@
     - https://github.com/anxpp/JavaDesignPattern
     - https://blog.csdn.net/cselmu9/article/details/51366946
     - http://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/simple_factory.html
-    - 
+    - https://github.com/Jia-Hong-Peng/Graphic-design-pattern
 - 说明
     - 非常感谢上面链接的原创者的资料和代码。让我受益无穷
     - 非常感谢结城浩的《图解设计模式》
@@ -36,7 +36,7 @@
     -   Ensure a class only has one instance,and provide a global point of access to it. 
 - 行为型模式
   -  行为型模式涉及怎样合理的设计对象之间的交互通信，以及怎样合理为对象分配职责，让设计富有弹性，易维护，易复用。 
-  -  **责任链模式**
+  -  [**责任链模式**](https://github.com/Jia-Hong-Peng/Graphic-design-pattern/blob/master/src/ChainOfResponsibility)
   -  **命令模式**
   -  **解释器模式**
   -  **迭代器模式**
@@ -65,5 +65,5 @@
   - ​    抽象工厂模式提供一个创建一系列相关或相互依赖对象的接口，而无须指定他们具体的类。它针对的是有多个产品的等级结构。而工厂方法模式针对的是一个产品的等级结构。
 - 单例模式 的 多线程解决方案 是  双重检查
 - 生成器模式：builder接口或者抽象类,具体类（想要的格式）和一个中间负责人的类（提供内容并指定对应的类）
-- 
+- 责任链模式：好的责任链模式的具体处理者应该是不受顺序的影响。也就是低耦合，高度独立！
 
