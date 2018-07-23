@@ -75,6 +75,8 @@
     - 为其它对象提供一种代理以控制对这个对象的访问。 
     - Provide a surrogate or placeholder for another object to control access to it. 
   - **享元模式**
+    -  运用共享技术有效地支持大量细粒度的对象。 
+    -   Use sharing to support large numbers of fine-grained objects efficiently. 
   - **外观模式**
   - **桥接模式**
   - **装饰模式**
@@ -121,4 +123,10 @@
 - 代理模式
   - 定义一个接口
   - 用两个类实现接口里面的方法。其中一个类总是调用另一类。相当于代理这个真正实现的类 
+- 享元模式
+  - 三个类
+  - 一个是最小元素的实体类
+  - 一个是生成这个实体类的工厂类。最好是单例模式
+  - 最后一个是管理上面两个类，并和外面使用这类资源进行调度。达到资源利用率最大化
+- 
 
