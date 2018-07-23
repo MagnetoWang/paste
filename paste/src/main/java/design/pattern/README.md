@@ -67,7 +67,10 @@
 - 结构型模式
   - 结构型模式涉及如何组合类和对象以形成更大的结构，和类有关的结构型模式涉及如何合理使用继承机制；和对象有关的结构型模式涉及如何合理的使用对象组合机制。
   - **适配器模式**
+    - 将一个类的接口转换成客户希望的另外一个接口。该模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。 
   - **组合模式**
+    -  将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。 
+    -   Compose objects into tree structures to represent part-whole hierarchies.Composite lets clients treat individual objects and compositions of objects uniformly. 
   - **代理模式**
   - **享元模式**
   - **外观模式**
@@ -111,5 +114,7 @@
 - 适配器模式
   - 在已经非常稳定的类基础上再次封装
 - 组合模式
-  - 
+  - 与访问模式基本一样。
+  - 但是没有访问类。而是纯粹的类与类之间组合
+- 代理模式
 
