@@ -62,6 +62,8 @@
      -  定义一个操作中算法的骨架，而将一些步骤延迟到子类中。模板方法使子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。 
      -  Define the skeleton of an algorithm in an operation,deferring some steps to subclasses.Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure. 
   -  **访问者模式** 
+     -   表示一个作用于某对象结构中的各个元素的操作。它可以在不改变各个元素的类的前提下定义作用于这些元素的新操作。 
+     -    Represent an opration to be performed on the elements of an object structure.Visitor lets you define a new operation without changing the classes of the elements on which it oprates. 
 - 结构型模式
   - 结构型模式涉及如何组合类和对象以形成更大的结构，和类有关的结构型模式涉及如何合理使用继承机制；和对象有关的结构型模式涉及如何合理的使用对象组合机制。
   - **适配器模式**
@@ -93,4 +95,8 @@
   - 定义接口就行了。然后具体类实现里面的方法。需要哪个策略用哪个类
 - 模板模式
   - 定义一个抽象类，然后再具体实现里面的方法。和策略模式特别像，不过一个是接口，一个是抽象类
+- 访问者模式
+  - 一个接口，可以包括访问内容的实体
+  - 一个抽象类，作为访问者。后面需要具体实现
+  - 还要一个抽象类需要再封装接口。最后再用具体的类实现对应方法
 
