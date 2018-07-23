@@ -6,7 +6,6 @@ import java.util.List;
 /**
  * @program: paste
  * @description: 状态者模式
- * @author: MagnetoWang
  * @create: 2018-07-23 10:02
  **/
 public class Memento {

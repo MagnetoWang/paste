@@ -1,12 +1,10 @@
 package design.pattern.memento;
 
 import java.util.*;
-import java.util.*;
 
 /**
  * @program: paste
  * @description: 游戏主体
- * @author: MagnetoWang
  * @create: 2018-07-23 10:05
  **/
 public class Gamer {
