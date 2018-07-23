@@ -72,6 +72,8 @@
     -  将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。 
     -   Compose objects into tree structures to represent part-whole hierarchies.Composite lets clients treat individual objects and compositions of objects uniformly. 
   - **代理模式**
+    - 为其它对象提供一种代理以控制对这个对象的访问。 
+    - Provide a surrogate or placeholder for another object to control access to it. 
   - **享元模式**
   - **外观模式**
   - **桥接模式**
@@ -117,4 +119,6 @@
   - 与访问模式基本一样。
   - 但是没有访问类。而是纯粹的类与类之间组合
 - 代理模式
+  - 定义一个接口
+  - 用两个类实现接口里面的方法。其中一个类总是调用另一类。相当于代理这个真正实现的类 
 
