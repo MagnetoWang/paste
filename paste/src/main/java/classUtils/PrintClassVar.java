@@ -1,5 +1,6 @@
 package classUtils;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.Collections;
@@ -15,10 +16,20 @@ import java.util.List;
 public class PrintClassVar {
     public static List<String> orderList=new LinkedList<>();
     public static void main(String[] args) {
-        String[] length={"dig_timestamp","click_housecode","fb_query_id","pt","operation_type","requestFunctionScores","queryFuzziness","search_query","fb_ab_test_flag","uuid","fb_service_id","returnRelativeScore","total","requestId","client","strategyId","id","operation_timestamp","cityIds","sorts","queryOperator","ucid","click_timestamp","cost","click_fb_expo_id","search_docs","queryMinimumShouldMatch","filters","fls","search_index","route","size","page","sortedQueryMinimumShouldMatch","aggregations","qfs"};   System.out.println(length.length);
+        String[] length={"dig_timestamp","click_housecode","fb_query_id","pt","operation_type","requestFunctionScores","queryFuzziness","search_query","fb_ab_test_flag","uuid","fb_service_id","returnRelativeScore","total","requestId","client","strategyId","id","operation_timestamp","cityIds","sorts","queryOperator","ucid","click_timestamp","cost","click_fb_expo_id","search_docs","queryMinimumShouldMatch","filters","fls","search_index","route","size","page","sortedQueryMinimumShouldMatch","aggregations","qfs"};
+        StringBuilder sqlKey=new StringBuilder();
+        StringBuilder sqlSet=new StringBuilder();
+        for(String e:length){
+            sqlKey.append(e+",");
+            sqlSet.append("?,");
+        }
+        sqlKey.delete(sqlKey.length()-1,sqlKey.length());
+        sqlSet.delete(sqlSet.length()-1,sqlSet.length());
+        System.out.println("("+sqlKey.toString()+")");
+        System.out.println("("+sqlSet.toString()+");");
 
-        playBack playBackTable=new playBack();
-        JSONObject jsonObject=(JSONObject)JSONObject.toJSON(playBackTable);
+        PlayBackTable playBackTable=new PlayBackTable();
+        JSONObject jsonObject=JSONObject.parseObject(JSON.toJSONString(playBackTable));
         StringBuilder stringBuilder=new StringBuilder();
         stringBuilder.append("[");
         for(String e: jsonObject.keySet()){

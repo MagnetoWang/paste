@@ -13,13 +13,13 @@ public class PlayBackTable {
     //日志显示的内容
     //36个字段
     @JSONField(ordinal=1)
-    private Long id;//自增长类型
+    private Long id=new Long(1);//自增长类型
     @JSONField(ordinal=2)
-    private String pt;//字符串格式的时间
+    private String pt="12";//字符串格式的时间
     @JSONField(ordinal=3)
-    private Integer operation_type;//行为说明类型
+    private Integer operation_type=1;//行为说明类型
     @JSONField(ordinal=4)
-    private Long  operation_timestamp;
+    private Long  operation_timestamp=new Long(1);
     @JSONField(ordinal=5)
     private Long click_timestamp;
     @JSONField(ordinal=6)
@@ -84,6 +84,13 @@ public class PlayBackTable {
     private Long dig_timestamp;
     @JSONField(ordinal = 36)
     private String client;
+    public PlayBackTable(){
+        id=new Long(1);
+        dig_timestamp=new Long(1);
+        page=new Integer(1);
+        queryFuzziness=-1;
+        returnRelativeScore=0;
+    }
     public Long getId() {
         return id;
     }
