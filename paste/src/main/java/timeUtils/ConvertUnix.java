@@ -3,6 +3,7 @@ package timeUtils;
 import org.apache.http.util.TextUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -14,8 +15,26 @@ import java.util.Locale;
  **/
 public class ConvertUnix {
     public static void main(String[] args) {
-        System.out.println(TimeStamp2Date("1532589298000","yyyy-MM-dd HH:mm:ss"));
+//        System.out.println(TimeStamp2Date("1532589298000","yyyy-MM-dd HH:mm:ss"));
+//        System.out.println(getNowTimeStamp());
+        System.out.println(getDate());
+        if(getDate().compareTo("2018-09-01")<0){
+            System.out.println("error");
+        }
+        System.out.println();
     }
+
+    /**
+     * 获取当前日期
+     */
+    public static String getDate(){
+        Date date=new Date();
+
+        SimpleDateFormat ft =
+                new SimpleDateFormat ("yyyy-MM-dd");//这个可以自定义，自动识别YYYYMMDD
+        return ft.format(date);
+    }
+
 
 
     /**
