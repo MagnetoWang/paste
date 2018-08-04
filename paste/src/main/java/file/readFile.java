@@ -1,11 +1,6 @@
-package fileUtils;
+package file;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 /** 
 *
@@ -19,8 +14,8 @@ import java.util.Map;
 
 public class readFile {
 	public static void main(String[] args) {
-		String filename="src/main/java/fileUtils/query.txt";
-//		src/main/java/fileUtils/
+		String filename="src/main/java/file/query.txt";
+//		src/main/java/file/
 		readFileByLines(filename);
 	}
     /**

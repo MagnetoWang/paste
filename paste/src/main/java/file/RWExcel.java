@@ -1,4 +1,4 @@
-package fileUtils;
+package file;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;

@@ -1,11 +1,9 @@
-package jsonUtils;
+package json;
 
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Date;
 
 /**

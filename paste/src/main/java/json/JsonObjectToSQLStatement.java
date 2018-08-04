@@ -1,4 +1,4 @@
-package jsonUtils;
+package json;
 
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package jsonUtils;
+package json;
 
 /**
  * @program: paste

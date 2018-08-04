@@ -23,8 +23,8 @@ import java.util.Map;
 */
 public class readCityName {
 	public static void main(String[] args) {
-		String filename="src/main/java/fileUtils/query.txt";
-//		src/main/java/fileUtils/
+		String filename="src/main/java/file/query.txt";
+//		src/main/java/file/
 		List<String> cityName = new LinkedList<String>();
 		cityName=readFileByLines(filename,cityName);
 	       Map<String,String> daBean=new HashMap<>();

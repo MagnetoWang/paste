@@ -1,8 +1,6 @@
-package jsonUtils;
+package json;
 
 import com.alibaba.fastjson.JSONObject;
-
-import java.sql.Date;
 
 /**
  * @program: paste
