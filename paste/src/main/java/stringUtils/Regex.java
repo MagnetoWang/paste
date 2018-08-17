@@ -4,7 +4,6 @@ import java.util.regex.Pattern;
 /**
  * @program: paste
  * @description: 处理正则表达式
- * @author: MagnetoWang
  * @create: 2018-08-16 10:58
  **/
 public class Regex {
