@@ -15,16 +15,23 @@ import java.util.*;
 public class ParseJson {
     private static final Logger logger = LoggerFactory.getLogger(ParseJson.class);
     private static String jsonString="{\"and\":[{\"or\":[{\"field\":\"bizcircleId\",\"action\":\"match\",\"value\":\"613000253\"}]},{\"or\":[{\"field\":\"appid\",\"action\":\"match\",\"value\":\"104\"}]},{\"or\":[{\"field\":\"cityId\",\"action\":\"match\",\"value\":\"310000\"}]},{\"or\":[{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000001\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000002\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000003\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000004\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000005\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000009\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000010\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000012\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000013\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000014\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000015\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000017\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107599999998\"}]},{\"or\":[{\"field\":\"priceTotal\",\"action\":\"range\",\"value\":\"[0,200)\"}]}]}";
-
+    private static String filterString="{\"and\":[{\"or\":[{\"field\":\"appid\",\"action\":\"match\",\"value\":\"104\"},{\"field\":\"appid\",\"action\":\"match\",\"value\":\"105\"}]},{\"or\":[{\"field\":\"cityId\",\"action\":\"match\",\"value\":\"410100\"}]},{\"or\":[{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000001\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000002\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000003\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000004\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000005\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000009\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000010\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000012\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000013\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000014\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000015\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107500000017\"},{\"field\":\"houseType\",\"action\":\"match\",\"value\":\"107599999998\"}]},{\"or\":[{\"field\":\"resblockId\",\"action\":\"match\",\"value\":\"3320027151281521\"}]}]}";
+    private static String sortString="[{\"field\":\"_score\",\"order\":\"desc\"},{\"field\":\"houseQ\",\"order\":\"desc\"},{\"field\":\"_uid\",\"order\":\"asc\"}]";
     public static void main(String[] args) {
-        parseFilter(jsonString);
-        for(String e:filterHashMap.keySet()){
-            System.out.println(e+" = "+JSONObject.toJSONString(filterHashMap.get(e)));
+
+        parseSort(sortToJsonString(sortString));
+//        parseFilter(filterString);
+//        for(String e:filterHashMap.keySet()){
+//            System.out.println(e+" = "+JSONObject.toJSONString(filterHashMap.get(e)));
+//        }
+                for(String e:sortMap.keySet()){
+            System.out.println(e+" = "+JSONObject.toJSONString(sortMap.get(e)));
         }
 
     }
-    private static Map<String ,List<String>> filterHashMap=new HashMap<>();
+    private static Map<String ,List<String>> filterHashMap;
     public static Map parseFilter(String json){
+        filterHashMap=new HashMap<>();
         if(json == null){
             logger.error("filterjson is null !!!!");
             return null;
@@ -65,8 +72,21 @@ public class ParseJson {
             }
         }
     }
-    public static String parseSort(String json){
-        return null;
+    private  static Map<String,String> sortMap;
+    public static Map parseSort(String json){
+        sortMap=new HashMap<>();
+        JSONObject jsonObject=JSONObject.parseObject(json);
+        if(jsonObject.getJSONArray("sort") instanceof JSONArray){
+            JSONArray jsonArray=jsonObject.getJSONArray("sort");
+            for(Object e:jsonArray){
+                sortMap.put(((JSONObject) e).getString("field"),((JSONObject) e).getString("order"));
+            }
+        }
+//        System.out.println(jsonObject.toJSONString());
+        return sortMap;
+    }
+    public static String sortToJsonString(String sortString){
+        return "{sort:"+sortString+"}";
     }
 
 
