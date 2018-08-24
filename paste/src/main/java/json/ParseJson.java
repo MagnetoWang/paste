@@ -20,10 +20,11 @@ public class ParseJson {
     public static void main(String[] args) {
 
         parseSort(sortToJsonString(sortString));
-//        parseFilter(filterString);
-//        for(String e:filterHashMap.keySet()){
-//            System.out.println(e+" = "+JSONObject.toJSONString(filterHashMap.get(e)));
-//        }
+        parseFilter(filterString);
+        parseFilter(filterString);
+        for(String e:filterHashMap.keySet()){
+            System.out.println(e+" = "+JSONObject.toJSONString(filterHashMap.get(e)));
+        }
                 for(String e:sortMap.keySet()){
             System.out.println(e+" = "+JSONObject.toJSONString(sortMap.get(e)));
         }
