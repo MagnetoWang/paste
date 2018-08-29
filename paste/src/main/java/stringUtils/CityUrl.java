@@ -1,5 +1,8 @@
 package stringUtils;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonAnyFormatVisitor;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,22 +22,25 @@ public class CityUrl {
     private  static Logger logger=LoggerFactory.getLogger(CityUrl.class);
     //循环总是少读最后一条城市，结尾一定要加个enter,文本中
     public static void main(String[] args) {
+
         CityUrl cityUrl=new CityUrl();
-        Scanner in=new Scanner(System.in);
+        cityUrl.deleteSingle();
+//        Scanner in=new Scanner(System.in);
+//
+//        routeUrl=new HashMap<>();
+//        while (in.hasNext()){
+//            String line=in.nextLine();
+//            if(cityUrl.checkLine(line)){
+//
+//                cityUrl.getUrl(line);
+//                System.out.println("routeUrl.size()="+routeUrl.size());
+////                System.out.println(routeUrl.toString());
+//            }
+//            System.out.println(JSONObject.toJSONString(routeUrl));
+//        }
 
-        routeUrl=new HashMap<>();
-        while (in.hasNext()){
-            String line=in.nextLine();
-            if(cityUrl.checkLine(line)){
-
-                cityUrl.getUrl(line);
-                System.out.println("routeUrl.size()="+routeUrl.size());
-//                System.out.println(routeUrl.toString());
-            }
-
-        }
 //        cityUrl.checkLine(in.nextLine());
-        System.out.println("end");
+//        System.out.println("end");
     }
 
     /**
@@ -124,4 +130,39 @@ public class CityUrl {
 //
 //        }
     }
+
+    private String routeMapUrl;
+
+    public void deleteSingle(){
+        JSONObject jsonObject=JSON.parseObject(routeMapUrl);
+        Map<String,String> route=new HashMap<>();
+        Map<String,String> newRoute=new HashMap<>();
+        route=(Map)JSONObject.parseObject(routeMapUrl);
+//        System.out.println(jsonObject.toJSONString());
+        System.out.println(route.toString());
+        StringBuilder stringBuilder=new StringBuilder();
+        StringBuilder urlBuilder=new StringBuilder();
+        for(String e:route.keySet()){
+
+            stringBuilder.append(e);
+            urlBuilder.append(route.get(e));
+            stringBuilder.delete(stringBuilder.length()-1,stringBuilder.length());
+            stringBuilder.delete(0,1);
+            System.out.println(stringBuilder.toString());
+
+
+            urlBuilder.delete(urlBuilder.length()-1,urlBuilder.length());
+            urlBuilder.delete(0,1);
+            System.out.println(urlBuilder.toString());
+
+
+            newRoute.put(stringBuilder.toString(),urlBuilder.toString());
+            stringBuilder.delete(0,stringBuilder.length());
+            urlBuilder.delete(0,urlBuilder.length());
+            System.out.println(JSONObject.toJSONString(newRoute));
+        }
+
+    }
+
+
 }
