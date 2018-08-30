@@ -24,23 +24,27 @@ public class CityUrl {
     public static void main(String[] args) {
 
         CityUrl cityUrl=new CityUrl();
-        cityUrl.deleteSingle();
-//        Scanner in=new Scanner(System.in);
-//
-//        routeUrl=new HashMap<>();
-//        while (in.hasNext()){
-//            String line=in.nextLine();
-//            if(cityUrl.checkLine(line)){
-//
-//                cityUrl.getUrl(line);
-//                System.out.println("routeUrl.size()="+routeUrl.size());
-////                System.out.println(routeUrl.toString());
-//            }
-//            System.out.println(JSONObject.toJSONString(routeUrl));
-//        }
+//        cityUrl.deleteSingle();
 
-//        cityUrl.checkLine(in.nextLine());
-//        System.out.println("end");
+        Scanner in=new Scanner(System.in);
+
+        routeUrl=new HashMap<>();
+        while (in.hasNextLine()){
+            String line=in.nextLine();
+            if(line.equals("nnn")){
+                break;
+            }
+            if(cityUrl.checkLine(line)){
+
+                cityUrl.getCityCn(line);
+                System.out.println("routeUrl.size()="+routeCityName.size());
+//                System.out.println(routeUrl.toString());
+            }
+
+        }
+        cityUrl.deleteSingle(JSONObject.toJSONString(routeCityName));
+        cityUrl.checkLine(in.nextLine());
+        System.out.println("end");
     }
 
     /**
@@ -130,14 +134,38 @@ public class CityUrl {
 //
 //        }
     }
+    private static Map<String,String> routeCityName=new HashMap<>();
+    /**
+     * 提取城市id,和城市中文名的关系
+     * @param line
+     */
+    public void getCityCn(String line){
+        List<String> answers=  Regex.getAllResult(line,"'.*?'");
 
-    private String routeMapUrl;
+        String route=null;
+        String name=null;
+        for(int i=0;i<answers.size();i++){
+//            System.out.println(answers.get(i));
+            if(answers.get(i).equals("'id'")){
+                route=answers.get(i+1);
+            }
+            if(answers.get(i).equals("'name'")){
+                name=answers.get(i+1);
+                System.out.println(route+name);
+            }
 
-    public void deleteSingle(){
-        JSONObject jsonObject=JSON.parseObject(routeMapUrl);
+            routeCityName.put(route,name);
+
+        }
+    }
+    private String routeMapUrl="涉及隐私数据，自行构造数据结构";
+
+
+    public void deleteSingle(String mapString){
+        JSONObject jsonObject=JSON.parseObject(mapString);
         Map<String,String> route=new HashMap<>();
         Map<String,String> newRoute=new HashMap<>();
-        route=(Map)JSONObject.parseObject(routeMapUrl);
+        route=(Map)JSONObject.parseObject(mapString);
 //        System.out.println(jsonObject.toJSONString());
         System.out.println(route.toString());
         StringBuilder stringBuilder=new StringBuilder();

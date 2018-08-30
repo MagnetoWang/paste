@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.validation.constraints.NotNull;
 import java.util.*;
 /**
  * @program: paste
@@ -32,6 +33,10 @@ public class ParseJson {
     }
     private static Map<String ,List<String>> filterHashMap;
     public static Map parseFilter(String json){
+        if(json==null){
+            logger.error("filter string is null!!!!,so return null");
+            return null;
+        }
         filterHashMap=new HashMap<>();
         if(json == null){
             logger.error("filterjson is null !!!!");
@@ -74,7 +79,11 @@ public class ParseJson {
         }
     }
     private  static Map<String,String> sortMap;
-    public static Map parseSort(String json){
+    public static Map parseSort( String json){
+        if(json==null){
+            logger.error("sort string is null!!!!,so return null");
+            return null;
+        }
         sortMap=new HashMap<>();
         JSONObject jsonObject=JSONObject.parseObject(json);
         if(jsonObject.getJSONArray("sort") instanceof JSONArray){
@@ -89,6 +98,9 @@ public class ParseJson {
     public static String sortToJsonString(String sortString){
         return "{sort:"+sortString+"}";
     }
+
+
+
 
 
 }
