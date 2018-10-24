@@ -3,3 +3,7 @@
 
 CMakeFiles/cpp_paste.dir/main.cpp.o: ../main.cpp
 
+CMakeFiles/cpp_paste.dir/run.cpp.o: ../example/inline.h
+CMakeFiles/cpp_paste.dir/run.cpp.o: ../example/mutex.h
+CMakeFiles/cpp_paste.dir/run.cpp.o: ../run.cpp
+

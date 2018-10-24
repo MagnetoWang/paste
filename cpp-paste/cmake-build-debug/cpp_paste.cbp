@@ -78,7 +78,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/assert.h">
+			<Option target="cpp_paste"/>
+		</Unit>
+		<Unit filename="/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/inline.h">
+			<Option target="cpp_paste"/>
+		</Unit>
+		<Unit filename="/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/mutex.h">
+			<Option target="cpp_paste"/>
+		</Unit>
 		<Unit filename="/Users/magnetowang/Documents/GitHub/paste/cpp-paste/main.cpp">
+			<Option target="cpp_paste"/>
+		</Unit>
+		<Unit filename="/Users/magnetowang/Documents/GitHub/paste/cpp-paste/run.cpp">
 			<Option target="cpp_paste"/>
 		</Unit>
 		<Unit filename="/Users/magnetowang/Documents/GitHub/paste/cpp-paste/CMakeLists.txt">

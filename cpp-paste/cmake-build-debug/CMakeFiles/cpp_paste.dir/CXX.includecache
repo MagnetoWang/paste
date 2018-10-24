@@ -6,7 +6,27 @@
 
 #IncludeRegexTransform: 
 
+/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/inline.h
+iostream
+-
+
+/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/mutex.h
+iostream
+-
+thread
+-
+mutex
+-
+
 /Users/magnetowang/Documents/GitHub/paste/cpp-paste/main.cpp
+iostream
+-
+
+/Users/magnetowang/Documents/GitHub/paste/cpp-paste/run.cpp
+example/inline.h
+/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/inline.h
+example/mutex.h
+/Users/magnetowang/Documents/GitHub/paste/cpp-paste/example/mutex.h
 iostream
 -
 
