@@ -15,9 +15,15 @@ import java.io.*;
 public class readFile {
 	public static void main(String[] args) {
 		String filename="src/main/java/file/query.txt";
+        readOneLine(filename);
 //		src/main/java/file/
-		readFileByLines(filename);
+//		readFileByLines(filename);
 	}
+
+
+
+
+
     /**
      * @param fileName 文件名
      * 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。 
@@ -196,6 +202,24 @@ public class readFile {
         } catch (IOException e) {  
             e.printStackTrace();  
         }  
-    }  
+    }
+
+    public static void readOneLine (String fileName)  {
+        File file = new File(fileName);
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = bufferedReader.readLine();
+            System.out.println(line);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 }
