@@ -24,3 +24,9 @@ hs_err_pid*
 
 .classpath
 .project
+
+.idea
+*.pdf
+
+cpp-paste/.idea
+python-paste/venv

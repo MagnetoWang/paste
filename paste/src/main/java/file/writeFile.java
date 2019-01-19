@@ -83,7 +83,7 @@ public class writeFile {
     public static void writeMethod4() {
         File file = new File(fileName);
         FileWriter writer = null;
-        String context = "write write";
+        String context = "01\nwrite writ";
         try {
             writer = new FileWriter(file, false);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
@@ -92,6 +92,16 @@ public class writeFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        context = "write write number 2";
+//        try {
+//            writer = new FileWriter(file, false);
+//            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+//            bufferedWriter.write(context);
+//            bufferedWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
     /**
      * 使用FileReader类读文本文件
