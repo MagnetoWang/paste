@@ -1,1 +1,2 @@
-write write
+01
+write ddddwrit
