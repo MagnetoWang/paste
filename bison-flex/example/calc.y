@@ -17,7 +17,7 @@ extern void yyerror(char *s){}
 
 %%
 calclist:
- | calclist exp EOL {printf(" = %d\n", $1); }
+ | calclist exp EOL {printf(" = %d\n", $2); }
  ;
 
 exp: factor
@@ -31,7 +31,8 @@ factor: term
  ;
 
 term: NUMBER
- | ABS term {$$ = $2 >= 0? $2 : - $2;}
+ | ABS term {$$ = $2 >= 0? $2 : - $2;
+            printf("数字"); }
  ;
 
 %%
