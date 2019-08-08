@@ -2,9 +2,9 @@
 // Created by magnetowang on 2019/8/7.
 //
 
-#include "node.h"
+#include "src/node.h"
 #include "codegen.h"
-#include "parser.hpp"
+#include "src/parser.hpp"
 
 using namespace std;
 
