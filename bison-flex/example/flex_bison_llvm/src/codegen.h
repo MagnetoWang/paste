@@ -7,22 +7,22 @@
 
 
 #include <stack>
-#include <llvm/Module.h>
-#include <llvm/Function.h>
-#include <llvm/Type.h>
-#include <llvm/DerivedTypes.h>
-#include <llvm/LLVMContext.h>
-#include <llvm/PassManager.h>
-#include <llvm/Instructions.h>
-#include <llvm/CallingConv.h>
-#include <llvm/Bitcode/ReaderWriter.h>
-#include <llvm/Analysis/Verifier.h>
-#include <llvm/Assembly/PrintModulePass.h>
-#include <llvm/Support/IRBuilder.h>
-#include <llvm/ModuleProvider.h>
-#include <llvm/Target/TargetSelect.h>
-#include <llvm/ExecutionEngine/GenericValue.h>
-#include <llvm/ExecutionEngine/JIT.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/Function.h>
+#include <llvm/IR/Type.h>
+#include <llvm/IR/DerivedTypes.h>
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/PassManager.h>
+#include <llvm/IR/Instructions.h>
+#include <llvm/IR/CallingConv.h>
+//#include <llvm/Bitcode/BitcodeWriter.h>
+//#include <llvm/Analysis/Verifier.h>
+//#include <llvm/Assembly/PrintModulePass.h>
+//#include <llvm/Support/IRBuilder.h>
+//#include <llvm/ModuleProvider.h>
+//#include <llvm/Target/TargetSelect.h>
+//#include <llvm/ExecutionEngine/GenericValue.h>
+//#include <llvm/ExecutionEngine/JIT.h>
 #include <llvm/Support/raw_ostream.h>
 
 using namespace llvm;
@@ -41,10 +41,10 @@ Function *mainFunction;
 
 public:
 Module *module;
-CodeGenContext() { module = new Module("main", getGlobalContext()); }
+//CodeGenContext() { module = new Module("main", getContext()); }
 
 void generateCode(NBlock& root);
-GenericValue runCode();
+//GenericValue runCode();
 std::map<std::string, Value*>& locals() { return blocks.top()->locals; }
 BasicBlock *currentBlock() { return blocks.top()->block; }
 void pushBlock(BasicBlock *block) { blocks.push(new CodeGenBlock()); blocks.top()->block = block; }
