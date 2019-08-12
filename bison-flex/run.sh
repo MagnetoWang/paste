@@ -6,7 +6,7 @@ ROOT_DIR=`pwd`
 FILE=$1
 PARAMETER=$2
 
-flex $1
-cc lex.yy.c -ll
+flex -+ $1
+cc lex.yy.cc -ll
 ./a.out PARAMETER
 

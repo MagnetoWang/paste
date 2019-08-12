@@ -53,3 +53,6 @@ target_link_libraries(toy3 llvm)
 add_executable(toy4 toy/toy4.cpp)
 target_link_libraries(toy4 llvm)
 
+add_executable(discrete discrete/grammer.cpp discrete/lexer.cpp)
+target_link_libraries(discrete llvm)
+
