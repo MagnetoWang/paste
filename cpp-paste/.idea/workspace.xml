@@ -23,7 +23,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -71,29 +71,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="refuseVim" pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;1e6fd90e-0a8f-4d20-956e-ca793b5ef02d&gt;/clion/refuseVim">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="refuseVim.cpp" pinned="true" current-in-tab="true">
-        <entry file="remoteDeploymentFS://&lt;1e6fd90e-0a8f-4d20-956e-ca793b5ef02d&gt;/clion/refuseVim.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tablet_impl.cc" pinned="true" current-in-tab="false">
-        <entry file="remoteDeploymentFS://&lt;1e6fd90e-0a8f-4d20-956e-ca793b5ef02d&gt;/rtidb/src/tablet/tablet_impl.cc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1313">
-              <caret line="95" column="66" selection-start-line="95" selection-start-column="66" selection-end-line="95" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="mutex.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/mutex.h">
           <provider selected="true" editor-type-id="text-editor">
@@ -132,16 +109,16 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="713" />
-    <option name="y" value="180" />
-    <option name="width" value="1440" />
-    <option name="height" value="797" />
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="1001" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -149,16 +126,10 @@
               <item name="cpp_paste" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpp-paste" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="cpp_paste" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cpp-paste" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,27 +183,26 @@
       <workItem from="1540178915168" duration="5021000" />
       <workItem from="1540259082811" duration="3060000" />
       <workItem from="1540274279548" duration="110000" />
-      <workItem from="1540299264224" duration="2522000" />
+      <workItem from="1540299264224" duration="3017000" />
+      <workItem from="1541343085944" duration="1215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11349000" />
+    <option name="totallyTimeSpent" value="13059000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="992" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1920" height="1001" extended-state="6" />
     <layout>
-      <window_info anchor="right" id="Remote Host" visible="true" weight="0.3370607" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13951011" />
+      <window_info active="true" anchor="right" id="Remote Host" order="3" visible="true" weight="0.25079873" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.104898825" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="CMake" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50106496" side_tool="true" visible="true" weight="0.32960895" />
-      <window_info anchor="bottom" id="File Transfer" sideWeight="0.49946752" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50159746" side_tool="true" visible="true" weight="0.26769912" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32976654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49893504" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49840257" visible="true" weight="0.26769912" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -242,6 +212,7 @@
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32976654" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="File Transfer" order="7" sideWeight="0.49946752" weight="0.32960895" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
@@ -252,6 +223,54 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="92" selection-start-line="5" selection-start-column="92" selection-end-line="5" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-start-column="2" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/inline.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#49#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/assert.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/mutex.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding>
+            <element signature="e#100#138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
