@@ -1,3 +1,0 @@
-/Users/magnetowang/Documents/GitHub/paste/cpp-paste/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/magnetowang/Documents/GitHub/paste/cpp-paste/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/magnetowang/Documents/GitHub/paste/cpp-paste/cmake-build-debug/CMakeFiles/cpp_paste.dir

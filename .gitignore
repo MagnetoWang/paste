@@ -29,4 +29,19 @@ hs_err_pid*
 *.pdf
 
 cpp-paste/.idea
+cpp-paste/cmake-build-debug/*
 python-paste/venv
+
+
+bison-flex/cmake-build-debug
+bison-flex/example/*.out
+bison-flex/example/*.c
+bison-flex/example/*.cc
+bison-flex/example/*.h
+bison-flex/example/*.hh
+bison-flex/example/flex_bison_llvm/cmake-build-debug
+bison-flex/example/flex_bison_llvm/thirdparty
+bison-flex/example/flex_bison_llvm/build
+bison-flex/example/flex_bison_llvm/discrete
+
+
