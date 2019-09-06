@@ -30,6 +30,7 @@ hs_err_pid*
 
 cpp-paste/.idea
 cpp-paste/cmake-build-debug/*
+cpp-paste/build
 python-paste/venv
 
 

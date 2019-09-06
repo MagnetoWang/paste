@@ -4,9 +4,9 @@
 #define random(x) (rand()%x)
 
 int main() {
-    srand((int)time(0));
+    
     for(int x=0;x<10;x++) {
-        printf("%d\n",random(100));
+        printf("%d\n",random(2));
     }
     return 0;
 }
