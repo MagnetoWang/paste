@@ -41,18 +41,31 @@ add_executable(jitExample src/JITExample.cpp)
 target_link_libraries(jitExample llvm)
 
 
-add_executable(toy toy/toy.cpp)
-target_link_libraries(toy llvm)
+#add_executable(toy toy/toy.cpp)
+#target_link_libraries(toy llvm)
+#
+#add_executable(toy2 toy/toy2.cpp)
+#target_link_libraries(toy2 llvm)
+#
+#add_executable(toy3 toy/toy3.cpp)
+#target_link_libraries(toy3 llvm)
+#
+#add_executable(toy4 toy/toy4.cpp)
+#target_link_libraries(toy4 llvm)
 
-add_executable(toy2 toy/toy2.cpp)
-target_link_libraries(toy2 llvm)
+#set(LEXER_GEN
+#        ${PROJECT_SOURCE_DIR}/discrete/lexer.cpp)
+#
+#add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/discrete/lexer.cpp
+#        COMMAND flex  ${PROJECT_SOURCE_DIR}/discrete/lexer.l
+#        )
 
-add_executable(toy3 toy/toy3.cpp)
-target_link_libraries(toy3 llvm)
-
-add_executable(toy4 toy/toy4.cpp)
-target_link_libraries(toy4 llvm)
-
+#add_executable(discrete discrete/grammer.cpp discrete/lexer.cpp discrete/node_test.cpp)
 add_executable(discrete discrete/grammer.cpp discrete/lexer.cpp)
+
 target_link_libraries(discrete llvm)
+
+
+add_executable(function_test discrete/function_test.cpp)
+
 
