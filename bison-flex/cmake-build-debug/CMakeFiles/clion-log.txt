@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /Users/magnetowang/Documents/GitHub/paste/bison-flex Select CMakeLists.txt file...
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/magnetowang/Documents/GitHub/paste/bison-flex
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/magnetowang/Documents/GitHub/paste/bison-flex/cmake-build-debug
