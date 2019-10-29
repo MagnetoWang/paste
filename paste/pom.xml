@@ -15,6 +15,25 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+            <groupId>net.revelc.code.formatter</groupId>
+            <artifactId>formatter-maven-plugin</artifactId>
+            <version>2.0.0</version>
+            <configuration>
+                <!--<configFile>${session.executionRootDirectory}/contrib/formatter.xml</configFile>-->
+                <directories>
+                    <directory>src</directory>
+                    <!--<directory>dl4j-examples</directory>-->
+                    <!--<directory>dl4j-spark-examples</directory>-->
+                    <!--<directory>datavec-examples</directory>-->
+                    <!--<directory>dl4j-cuda-specific-examples</directory>-->
+                    <!--<directory>nd4j-examples</directory>-->
+                    <!--<directory>rl4j-examples</directory>-->
+                    <!--<directory>arbiter-examples</directory>-->
+                    <!--<directory>lstm-hdfs</directory>-->
+                </directories>
+            </configuration>
+            </plugin>
         </plugins>
     </build>
     <packaging>jar</packaging>
@@ -38,6 +57,36 @@
         <java.version>1.8</java.version>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <spring-cloud.version>Dalston.SR2</spring-cloud.version>
+
+        <!--DL4J的版本号管理-->
+        <!-- Change the nd4j.backend property to nd4j-cuda-9.2-platform,nd4j-cuda-10.0-platform or nd4j-cuda-10.1-platform to use CUDA GPUs -->
+        <nd4j.backend>nd4j-native-platform</nd4j.backend>
+        <!--<nd4j.backend>nd4j-cuda-10.1-platform</nd4j.backend>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <shadedClassifier>bin</shadedClassifier>
+        <nd4j.version>1.0.0-beta2</nd4j.version>
+        <dl4j.version>1.0.0-beta2</dl4j.version>
+        <datavec.version>1.0.0-beta2</datavec.version>
+        <arbiter.version>1.0.0-beta2</arbiter.version>
+        <rl4j.version>1.0.0-beta2</rl4j.version>
+        <!-- Scala binary version: DL4J's Spark and UI functionality are released with both Scala 2.10 and 2.11 support -->
+        <scala.binary.version>2.11</scala.binary.version>
+        <spark.version>2.4.3</spark.version>
+        <hadoop.version>2.2.0</hadoop.version>  <!-- Hadoop version used by Spark 1.6.3 and 2.2.1 (and likely others) -->
+        <guava.version>19.0</guava.version>
+        <logback.version>1.1.7</logback.version>
+        <jfreechart.version>1.0.13</jfreechart.version>
+        <jcommon.version>1.0.23</jcommon.version>
+        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+        <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
+        <exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
+        <maven.minimum.version>3.3.1</maven.minimum.version>
+        <javafx.version>2.2.3</javafx.version>
+        <aws.sdk.version>1.11.109</aws.sdk.version>
+        <jackson.version>2.5.1</jackson.version>
+        <scala.plugin.version>3.2.2</scala.plugin.version>
+        <!--DL4J的版本号管理-->
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -52,6 +101,61 @@
     </dependencyManagement>
 
   <dependencies>
+      <!--dl4j库-->
+      <!-- ND4J backend. You need one in every DL4J project. Normally define artifactId as either nd4j-native-platform or nd4j-cuda-X.X-platform to use CUDA GPUs (check parent pom for supported cuda versions) -->
+      <dependency>
+          <groupId>org.nd4j</groupId>
+          <artifactId>${nd4j.backend}</artifactId>
+          <version>${nd4j.version}</version>
+      </dependency>
+
+      <!-- Core DL4J functionality -->
+      <dependency>
+          <groupId>org.deeplearning4j</groupId>
+          <artifactId>deeplearning4j-nlp</artifactId>
+          <version>${dl4j.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.deeplearning4j</groupId>
+          <artifactId>deeplearning4j-zoo</artifactId>
+          <version>${dl4j.version}</version>
+      </dependency>
+
+      <!-- deeplearning4j-ui is used for visualization: see http://deeplearning4j.org/visualization -->
+      <dependency>
+          <groupId>org.deeplearning4j</groupId>
+          <artifactId>deeplearning4j-ui_${scala.binary.version}</artifactId>
+          <version>${dl4j.version}</version>
+      </dependency>
+
+      <!-- datavec-data-codec: used only in video example for loading video data -->
+      <dependency>
+          <artifactId>datavec-data-codec</artifactId>
+          <groupId>org.datavec</groupId>
+          <version>${datavec.version}</version>
+      </dependency>
+      <!-- Used in the feedforward/classification/MLP* and feedforward/regression/RegressionMathFunctions example -->
+      <!--专门用于画图的工具包-->
+      <dependency>
+          <groupId>jfree</groupId>
+          <artifactId>jfreechart</artifactId>
+          <version>${jfreechart.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jfree</groupId>
+          <artifactId>jcommon</artifactId>
+          <version>${jcommon.version}</version>
+      </dependency>
+      <!--专门打印计算过程中的日志，比如损失函数值，预测值等等，必须要加对于官方的example来说-->
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>${logback.version}</version>
+      </dependency>
+      <!--dl4j库-->
+
+
       <!-- https://mvnrepository.com/artifact/org.apache.avro/avro -->
       <dependency>
           <groupId>org.apache.avro</groupId>
