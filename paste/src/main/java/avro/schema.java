@@ -19,6 +19,9 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.MessageEncoder;
 import org.apache.avro.specific.SpecificDatumWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.apache.log4j.BasicConfigurator;
 import org.testng.annotations.Test;
 
 import java.io.*;
@@ -36,6 +39,7 @@ import org.apache.avro.Schema.Type;
  * @Date 2019/10/16 12:12
  **/
 public class schema {
+    private final Logger logger = LoggerFactory.getLogger(schema.class);
     @Test
     public void testSplitSchemaBuild() {
         Schema s = SchemaBuilder.record("HandshakeRequest").namespace("org.apache.avro.ipc").fields().name("clientProtocol")
@@ -353,6 +357,7 @@ public class schema {
      * 从创建schema，放入数据到序列化一条龙的流程demo演示
      */
     public void testDemo() throws Exception {
+        BasicConfigurator.configure();
         Schema tableSchema = Schema.createRecord("studentInfomation", "different type information of student", null, false);
         List<Field> fields = new ArrayList<>();
 //        Schema INT_TYPE = Schema.create(Type.STRING);
@@ -379,7 +384,7 @@ public class schema {
         System.out.println(data.length);
         BinaryMessageDecoder<GenericData.Record> decoder = new BinaryMessageDecoder<>(GenericData.get(), tableSchema);
         GenericData.Record rawData = decoder.decode(data);
-        System.out.println(rawData.toString());
+        logger.info(rawData.toString());
 
 //        DecoderFactory factory = new DecoderFactory().configureDecoderBufferSize(521);
 //        Decoder d = factory.binaryDecoder(new ByteArrayInputStream(data), null);
