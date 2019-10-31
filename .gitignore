@@ -28,9 +28,12 @@ hs_err_pid*
 .idea
 *.pdf
 
+paste/src/resources/dl4jModel
+
 cpp-paste/.idea
 cpp-paste/cmake-build-debug/*
 cpp-paste/build
+cpp-paste/ferrari
 python-paste/venv
 
 
