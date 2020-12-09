@@ -2,6 +2,8 @@ package analyzer
 //import org.apache.spark.internal.Logging
 import java.io.File
 
+import org.apache.spark.sql.Row
+
 //import analyzer.PercentileApprox.percentile_approx
 import com.esotericsoftware.kryo.util.IntMap.Keys
 import log.Logging
@@ -61,7 +63,7 @@ class DataSkewAnalyzer extends Serializable with Logging {
     df1.createOrReplaceTempView("main_table")
 
     val ts = "bonus"
-    val keys = Seq("employee_name", "department")
+    var keys = Seq("employee_name", "department")
     val sortKeys = keys + ts
     println("df cnt:" + df1.count())
 //    printRepartitionResult(df1, keys)
@@ -111,15 +113,25 @@ class DataSkewAnalyzer extends Serializable with Logging {
       var arrays = Seq(row)
       val value = arr(tag_index)
 //      System.out.println(String.format("value = %d, keys = %s, %s ts = %d", value.asInstanceOf[Int], arr(0).asInstanceOf[String], arr(1).asInstanceOf[String], arr(2).asInstanceOf[Int]))
-      for (i <- 0 until  value.asInstanceOf[Int] - 1) {
+      for (i <- 1 until value.asInstanceOf[Int]) {
 //        System.out.println(value.asInstanceOf[Int] + " " + arr(0).asInstanceOf[String] + " " + arr(1).asInstanceOf[String] + " " + arr(2).asInstanceOf[Int])
-
-        arrays = arrays :+ row
+        println("i = " + i)
+        val temp_arr = row.toSeq.toArray
+        temp_arr(tag_index) = i
+        arrays = arrays :+ Row.fromSeq(temp_arr)
       }
       arrays
     })
 
-    sqlContext.createDataFrame(big_res, res.schema).show(100)
+    val window = sqlContext.createDataFrame(big_res, res.schema)
+    window.show(100)
+//    keys =  "tag_wzx" +: keys
+    window.repartition(20, keys.map(window(_)): _*).foreach(
+      row => {
+        println("rows_wzx" + row.toString())
+      }
+    )
+
 
 
 //    val topDf = input.rdd.flatMap(row => {
@@ -214,6 +226,9 @@ object DataSkewAnalyzer extends Logging {
 //  val logger = LoggerFactory.getLogger(this.getClass)
   def main(args: Array[String]): Unit = {
     log.info("开始数据集分析")
+//    for( a <- 1 until 10){
+//      println( "Value of a: " + a );
+//    }
 
     val ds = new DataSkewAnalyzer()
     ds.demo()
