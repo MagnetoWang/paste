@@ -2,12 +2,12 @@ package analyzer
 //import org.apache.spark.internal.Logging
 import java.io.File
 
-import analyzer.PercentileApprox.percentile_approx
+//import analyzer.PercentileApprox.percentile_approx
 import com.esotericsoftware.kryo.util.IntMap.Keys
 import log.Logging
 import org.apache.commons.io.FileUtils
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{DataFrame, Encoders, SparkSession}
+import org.apache.spark.sql.{Column, DataFrame, Encoders, SparkSession}
 //import org.slf4j.LoggerFactory
 import PercentileApprox._
 /**
@@ -53,8 +53,12 @@ class DataSkewAnalyzer extends Serializable with Logging {
     )
     val df1 = simpleData.toDF("employee_name","department","state","salary","age","bonus")
 
+    val sqlContext = spark.sqlContext
+//    sqlContext.udf.register("percentile_approx", percentile_approx(_: Column, _: Column, _: Int))
+
 
     df1.show()
+    df1.createOrReplaceTempView("main_table")
 
     val ts = "bonus"
     val keys = Seq("employee_name", "department")
@@ -63,23 +67,28 @@ class DataSkewAnalyzer extends Serializable with Logging {
 //    printRepartitionResult(df1, keys)
     import org.apache.spark.sql.functions._
 //    df1.groupBy(keys.map(df1(_)): _*).agg()
-    var coordinate = df1.groupBy(keys.map(df1(_)): _*).agg(sum("bonus") as "total_sum",
-        approx_count_distinct("bonus") as "order_bonus",
-        mean("bonus"),
-        percentile_approx($"bonus", lit(0)) as "percentile_0",
-        percentile_approx($"bonus", lit(0.25)) as "percentile_1",
-        percentile_approx($"bonus", lit(0.5)) as "percentile_2",
-        percentile_approx($"bonus", lit(0.75)) as "percentile_3",
-        percentile_approx($"bonus", lit(1)) as "percentile_4",
-        max("bonus"),
-        min("bonus")
-    )
+//    var coordinate = df1.groupBy(keys.map(df1(_)): _*).agg(sum("bonus") as "total_sum",
+//      $"employee_name",
+//        approx_count_distinct("bonus") as "order_bonus",
+//        mean("bonus"),
+//        percentile_approx($"bonus", lit(0)) as "percentile_0",
+//        percentile_approx($"bonus", lit(0.25)) as "percentile_1",
+//        percentile_approx($"bonus", lit(0.5)) as "percentile_2",
+//        percentile_approx($"bonus", lit(0.75)) as "percentile_3",
+//        percentile_approx($"bonus", lit(1)) as "percentile_4",
+//        max("bonus"),
+//        min("bonus")
+//    )
 //    coordinate = coordinate..agg(count("employee_name"))
 
 
 //    val coordinate = df1.groupBy(keys.map(df1(_)): _*)
 //    coordinate.agg()
 //    coordinate.explain()
+
+    val per_path = "/Users/magnetowang/Documents/GitHub/paste/scala-paste/src/main/resources/spark/analyse_percent.sql"
+    val per_code = FileUtils.readFileToString(new File(per_path))
+    val coordinate  = sqlContext.sql(per_code)
     coordinate.show()
 
     df1.agg(
@@ -88,12 +97,66 @@ class DataSkewAnalyzer extends Serializable with Logging {
 //      count(),
     ).show()
 
-    df1.createOrReplaceTempView("main_table")
+
     coordinate.createOrReplaceTempView("info_table")
-    val sqlContext = spark.sqlContext
+
     val sql_path = "/Users/magnetowang/Documents/GitHub/paste/scala-paste/src/main/resources/spark/add_column.sql"
     val sql_code = FileUtils.readFileToString(new File(sql_path))
-    sqlContext.sql(sql_code).show()
+    val res = sqlContext.sql(sql_code)
+    res.show()
+//    val colIndex = cols.map(input.columns.indexOf(_))
+    val tag_index: Int = res.columns.indexOf("tag_wzx")
+    val big_res = res.rdd.flatMap(row => {
+      val arr = row.toSeq.toArray
+      var arrays = Seq(row)
+      val value = arr(tag_index)
+//      System.out.println(String.format("value = %d, keys = %s, %s ts = %d", value.asInstanceOf[Int], arr(0).asInstanceOf[String], arr(1).asInstanceOf[String], arr(2).asInstanceOf[Int]))
+      for (i <- 0 until  value.asInstanceOf[Int] - 1) {
+//        System.out.println(value.asInstanceOf[Int] + " " + arr(0).asInstanceOf[String] + " " + arr(1).asInstanceOf[String] + " " + arr(2).asInstanceOf[Int])
+
+        arrays = arrays :+ row
+      }
+      arrays
+    })
+
+    sqlContext.createDataFrame(big_res, res.schema).show(100)
+
+
+//    val topDf = input.rdd.flatMap(row => {
+//      val arr = row.toSeq.toArray
+//      var arrays = Seq(row)
+//      if (oldRow == null) {
+//        flag = true
+//      } else {
+//        val oldArr = oldRow.toSeq.toArray
+//        // 不同窗口分界线的条件，只需要考虑分界线的topN区别，不需要考虑topN之外的数据
+//        for(index <- colIndex) {
+//          if(!flag && oldArr(index) != arr(index)) {
+//            flag = true
+//          }
+//        }
+//      }
+//      oldRow = row
+//      if(flag && topN > 1) {
+//        val valueCol = arr(valueIndex).asInstanceOf[Long]
+//        val partId = (valueCol + offset - windowOp.bucketInfo.lowerBound) / windowOp.bucketInfo.bucketLen
+//        if (partId != arr(partitionIndex)) {
+//          arrays
+//        } else {
+//          log.debug(s"partId=$partId, value=$valueCol, offset=$offset")
+//          arr(partitionIndex) = arr(partitionIndex).asInstanceOf[Integer] + partOffset
+//          topN = topN - 1
+//          if(topN == 1) {
+//            flag = false
+//            topN = windowOp.windowConfig.getAtLeast
+//          }
+//          arrays = arrays :+ Row.fromSeq(arr)
+//          arrays
+//        }
+//      } else {
+//        arrays
+//      }
+//    })
 
 //    df1.join(coordinate).where("")
 //    val res = df1.repartition(keys.map(df1(_)): _*).stat.approxQuantile(ts, Array[Double](0, 0.25, 0.5, 0.75, 1), 0.1)
