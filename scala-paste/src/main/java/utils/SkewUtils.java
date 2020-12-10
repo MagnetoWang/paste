@@ -35,6 +35,8 @@ public class SkewUtils {
         for (String e : keys) {
             sql.append(e + ",\n");
         }
+//        count(employee_name, department) as key_cnt,
+        sql.append(String.format("count(%s) as key_cnt,\n", StringUtils.join(keys, ",")));
         sql.append(String.format("min(%s) as min_%s,\n", ts, ts));
         sql.append(String.format("max(%s) as max_%s,\n", ts, ts));
         sql.append(String.format("mean(%s) as mean_%s,\n", ts, ts));
@@ -60,32 +62,11 @@ public class SkewUtils {
             sql.append(table1 + "." + e + ",");
         }
 //        sql.append(table1 + "." + ts + ",\n");
-        sql.append("\ncase\n");
 
-        for (int i = 0; i < quantile; i++) {
-            if (i == 0) {
-                sql.append(String.format("when %s.%s <= percentile_%s then %d\n", table1, ts, i, quantile - i));
-            }
+        sql.append(caseWhenTag(table1, table2, ts, quantile, "tag_wzx"));
+        sql.append(",");
+        sql.append(caseWhenTag(table1, table2, ts, quantile, "position_wzx"));
 
-            sql.append(String.format("when %s.%s > percentile_%s and %s.%s <= percentile_%d then %d\n", table1, ts, i, table1, ts, i+1, quantile - i));
-            if (i == quantile) {
-                sql.append(String.format("when %s.%s > percentile_%s then %d\n", table1, ts, i+1, quantile - i));
-            }
-        }
-        sql.append("end as tag_wzx,\n");
-
-        sql.append("\ncase\n");
-        for (int i = 0; i < quantile; i++) {
-            if (i == 0) {
-                sql.append(String.format("when %s.%s <= percentile_%s then %d\n", table1, ts, i, quantile - i));
-            }
-
-            sql.append(String.format("when %s.%s > percentile_%s and %s.%s <= percentile_%d then %d\n", table1, ts, i, table1, ts, i+1, quantile - i));
-            if (i == quantile) {
-                sql.append(String.format("when %s.%s > percentile_%s then %d\n", table1, ts, i+1, quantile - i));
-            }
-        }
-        sql.append("end as position_wzx\n");
 
         sql.append(String.format("from %s left join %s on ", table1, table2));
         List<String> conditions = new ArrayList<>();
@@ -95,6 +76,32 @@ public class SkewUtils {
         }
         sql.append(StringUtils.join(conditions, " and "));
         sql.append(";");
+        return sql.toString();
+    }
+
+    /**
+     * 对shu
+     * @paraable1
+     * @param ts
+     * @param quantile
+     * @param output
+     * @return
+     */
+    public static String caseWhenTag(String table1, String table2, String ts, int quantile, String output) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("\ncase\n");
+        sql.append(String.format("when %s.key_cnt < %s then 1\n", table2, quantile));
+        for (int i = 0; i < quantile; i++) {
+            if (i == 0) {
+                sql.append(String.format("when %s.%s <= percentile_%s then %d\n", table1, ts, i, quantile - i));
+            }
+
+            sql.append(String.format("when %s.%s > percentile_%s and %s.%s <= percentile_%d then %d\n", table1, ts, i, table1, ts, i+1, quantile - i));
+            if (i == quantile) {
+                sql.append(String.format("when %s.%s > percentile_%s then %d\n", table1, ts, i+1, quantile - i));
+            }
+        }
+        sql.append("end as " + output + "\n");
         return sql.toString();
     }
 

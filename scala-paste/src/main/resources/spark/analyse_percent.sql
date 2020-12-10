@@ -1,6 +1,7 @@
 select
 employee_name,
 department,
+count(employee_name,department) as key_cnt,
 min(bonus) as min_bonus,
 max(bonus) as max_bonus,
 mean(bonus) as mean_bonus,
