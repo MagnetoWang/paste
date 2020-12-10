@@ -125,8 +125,9 @@ class DataSkewAnalyzer extends Serializable with Logging {
 
     val window = sqlContext.createDataFrame(big_res, res.schema)
     window.show(100)
-//    keys =  "tag_wzx" +: keys
-    window.repartition(20, keys.map(window(_)): _*).foreach(
+    val tags =  keys :+ "tag_wzx"
+    val tsCols = tags :+ ts
+    window.repartition(20, tags.map(window(_)): _*).sortWithinPartitions(tsCols.map(window(_)): _*).foreach(
       row => {
         println("rows_wzx" + row.toString())
       }

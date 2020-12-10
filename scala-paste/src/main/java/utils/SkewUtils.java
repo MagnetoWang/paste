@@ -59,20 +59,34 @@ public class SkewUtils {
         for (String e : schemas) {
             sql.append(table1 + "." + e + ",");
         }
-        sql.append(table1 + "." + ts + ",\n");
-        sql.append("case\n");
+//        sql.append(table1 + "." + ts + ",\n");
+        sql.append("\ncase\n");
 
         for (int i = 0; i < quantile; i++) {
             if (i == 0) {
-                sql.append(String.format("when %s.%s <= percentile_%s then %d\n", table1, ts, i, i+1));
+                sql.append(String.format("when %s.%s <= percentile_%s then %d\n", table1, ts, i, quantile - i));
             }
 
-            sql.append(String.format("when %s.%s > percentile_%s and %s.%s <= percentile_%d then %d\n", table1, ts, i, table1, ts, i+1, i+1));
+            sql.append(String.format("when %s.%s > percentile_%s and %s.%s <= percentile_%d then %d\n", table1, ts, i, table1, ts, i+1, quantile - i));
             if (i == quantile) {
-                sql.append(String.format("when %s.%s > percentile_%s then %d\n", table1, ts, i+1, i+1));
+                sql.append(String.format("when %s.%s > percentile_%s then %d\n", table1, ts, i+1, quantile - i));
             }
         }
-        sql.append("end as tag_wzx\n");
+        sql.append("end as tag_wzx,\n");
+
+        sql.append("\ncase\n");
+        for (int i = 0; i < quantile; i++) {
+            if (i == 0) {
+                sql.append(String.format("when %s.%s <= percentile_%s then %d\n", table1, ts, i, quantile - i));
+            }
+
+            sql.append(String.format("when %s.%s > percentile_%s and %s.%s <= percentile_%d then %d\n", table1, ts, i, table1, ts, i+1, quantile - i));
+            if (i == quantile) {
+                sql.append(String.format("when %s.%s > percentile_%s then %d\n", table1, ts, i+1, quantile - i));
+            }
+        }
+        sql.append("end as position_wzx\n");
+
         sql.append(String.format("from %s left join %s on ", table1, table2));
         List<String> conditions = new ArrayList<>();
         for (Map.Entry<String, String> e : keysMap.entrySet()) {
@@ -101,12 +115,12 @@ public class SkewUtils {
         Map<String, String> keys = new HashMap<>();
         keys.put("employee_name", "employee_name");
         keys.put("department", "department");
-//        genPercentileSql(table1, 4, new ArrayList<String>(){
-//            {
-//                add("employee_name");
-//                add("department");
-//            }
-//        }, ts);
+        genPercentileSql(table1, 4, new ArrayList<String>(){
+            {
+                add("employee_name");
+                add("department");
+            }
+        }, ts);
         System.out.println(genPercentileTagSql(table1, table2, 4, schemas, keys, ts));
     }
 }
