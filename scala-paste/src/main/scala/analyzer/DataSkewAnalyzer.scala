@@ -91,6 +91,7 @@ class DataSkewAnalyzer extends Serializable with Logging {
     val per_path = "/Users/magnetowang/Documents/GitHub/paste/scala-paste/src/main/resources/spark/analyse_percent.sql"
     val per_code = FileUtils.readFileToString(new File(per_path))
     val coordinate  = sqlContext.sql(per_code)
+    println(coordinate.schema.apply(2).name)
     coordinate.show()
 
     df1.agg(

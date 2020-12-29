@@ -14,3 +14,13 @@ percentile_approx(bonus, 1) as percentile_4
 from
 main_table
 group by employee_name , department;
+
+
+select * from t1
+union
+select *, 1 from t1 where t1.x = 2 or t1.x = 3 or t1.x = 4
+union
+select *, 2 from t1 where t1.x = 3 or t1.x = 4
+union
+select *, 3 from t1 where t1.x = 4
+
